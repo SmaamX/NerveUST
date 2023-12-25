@@ -223,7 +223,32 @@ def nerve_in(inpu,log,split,sts,sts2,res,res2,lear,logxb,tll):
     return outref
   return run(inpu,log)
 def nerves_in(inpu,log,split):
-  comb = nerve_in(inpu,log,split,45,60,False,False,True,True,True)
+  stglo = nerve_in(inpu,log,split,45,60,False,False,True,True,True)
+  stlow = nerve_in(inpu,log,split,45,50,False,False,False,False,True)
+  sthi = nerve_in(inpu,log,split,60,70,False,False,False,False,True)
+  stb = nerve_in(inpu,log,split,45,50,True,True,False,False,True)
+  stb2 = nerve_in(inpu,log,split,45,50,False,True,True,False,True)
+  stb3 = nerve_in(inpu,log,split,45,50,True,False,False,False,True)
+  comb = []
+  if random.randint(0,5) == 5:
+    for item in stglo:
+      nt = random.randint(0,100)
+      if nt <= 60:
+        if item in stlow or item in sthi or item in stb or item in stb2 or item in stb3:
+            comb.append(item)
+      if nt <= 70 and nt > 60:
+        if item in stlow or item in sthi and item in stb or item in stb2 or item in stb3:
+            comb.append(item)
+      if nt <= 80 and nt > 70:
+        if item in stlow and item in sthi and item in stb or item in stb2 or item in stb3:
+            comb.append(item)
+      if nt <= 95 and nt > 80:
+        if item in stlow and item in sthi and item in stb and item in stb2 or item in stb3:
+            comb.append(item)
+      if nt <= 100 and nt > 95:
+        if item in stlow and item in sthi or item in stb and item in stb2 and item in stb3:
+            comb.append(item)
+  else:comb.append(stglo)
   flat = []
   for item in comb:
     if isinstance(item, list):flat.extend(item)
@@ -235,6 +260,10 @@ def nerves_in(inpu,log,split):
   except:dl = sp
   try:return dl
   except:return 0
+def nul(inpu,log,split):
+  le1 = nerves_in(inpu,log,split);le2 = nerves_in(le1,log,split); le3 = nerves_in(le2,log,split)
+  inpu = inpu.split(str(split));inpu.append(logx)
+  return le3
 if __name__ == '__main__':
   while True:
     s=(gram(nerves_in(input("Input:"),False," ")))
