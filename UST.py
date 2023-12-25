@@ -227,7 +227,7 @@ def nerves_in(inpu,log,split):
   stlow = nerve_in(inpu,log,split,45,50,False,False,False,False,True)
   sthi = nerve_in(inpu,log,split,60,70,False,False,False,False,True)
   stb = nerve_in(inpu,log,split,45,50,True,True,False,False,True)
-  stb2 = nerve_in(inpu,log,split,45,50,False,True,True,False,True)
+  stb2 = nerve_in(inpu,log,split,45,50,False,True,False,False,True)
   stb3 = nerve_in(inpu,log,split,45,50,True,False,False,False,True)
   comb = []
   if random.randint(0,5) == 5:
