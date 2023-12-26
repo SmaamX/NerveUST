@@ -251,6 +251,6 @@ def nul(inpu,log,split):
   return le3
 if __name__ == '__main__':
   while True:
-    s=(gram(nerves_in(input("Input:"),False," ")))
-    try:s = ' '.join(s);print(s)
+    s=(gram(nerves_in(input("Input -> "),False," ")))
+    try:s = ' '.join(s);print("Output -> ",s)
     except:pass
