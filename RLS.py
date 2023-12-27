@@ -29,7 +29,7 @@ class nel:
       return words
     except: return words
 
-  def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll):
+  def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll,clea):
     def run(inpu,log):
       trm = False;re = False;re2 = False;re3 = False;re4 = False;re5 = False;out = []
       numr = 0
@@ -156,7 +156,7 @@ class nel:
                       numm += 1
                       if inpu[inpu.index(x)+n] != None:
                         self.inpul.append(inpu[int(inpu.index(x))+n])
-                    self.inpul = list(set([''.join(item) for item in self.inpul]))
+                    if clea == True:self.inpul = list(set([''.join(item) for item in self.inpul]))
               except:pass
               try:
                 if res2 == True:
@@ -198,8 +198,8 @@ class nel:
       return outref
     return run(inpu,log)
   def nerves_in(self,inpu,log,split):
-    stglo = self.nerve_in(inpu,log,split,45,60,False,False,True,True,True)
-    stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True)
+    stglo = self.nerve_in(inpu,log,split,45,60,False,False,True,True,True,True if self.random.randint(0,40)==0 else False)
+    stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True,False)
     comb = []
     if self.random.randint(0,5) == 5:
       for item in stglo:
