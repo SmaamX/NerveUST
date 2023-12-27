@@ -156,6 +156,7 @@ class nel:
                       numm += 1
                       if inpu[inpu.index(x)+n] != None:
                         self.inpul.append(inpu[int(inpu.index(x))+n])
+                    self.inpul = list(set([''.join(item) for item in self.inpul]))
               except:pass
               try:
                 if res2 == True:
