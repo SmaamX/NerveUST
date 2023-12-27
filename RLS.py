@@ -178,6 +178,8 @@ class nel:
                       for xn in range(len(inpu)):
                         out.append(self.inpul[nl + xn])
               except:pass
+            #IQ 9000000000000
+            out = list(set([''.join(item) for item in out]))
           numr += 1
       try:
         if log == True:print(self.inpul);print(rps),print(self.inpux);print(rpt)
