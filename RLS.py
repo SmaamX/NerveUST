@@ -198,7 +198,7 @@ class nel:
       return outref
     return run(inpu,log)
   def nerves_in(self,inpu,log,split):
-    stglo = self.nerve_in(inpu,log,split,45,60,False,False,True,True,True,True if self.random.randint(0,90)==0 else False)
+    stglo = self.nerve_in(inpu,log,split,45,60,True,True,True,True,True,True if self.random.randint(0,90)==0 else False)
     stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True,False)
     comb = []
     if self.random.randint(0,5) == 5:
