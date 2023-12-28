@@ -1,7 +1,7 @@
 
 class nel:
   import random
-  inpul = ["0"];inpux = [];inpulx = [];logx = [];pronouns = [];verbs = [];articles = ['the', 'a', 'an'];com = ['clear']
+  inpul = ["0"];inpux = [];inpulx = [];logx = [];pronouns = [];verbs = [];articles = ['the', 'a', 'an'];com = ['clear'];rpst=None
   def inpuld(x):
     back = self.inpul 
     self.inpul = x
@@ -28,7 +28,6 @@ class nel:
           words.append(item)
       return words
     except: return words
-
   def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll,clea):
     def run(inpu,log):
       trm = False;re = False;re2 = False;re3 = False;re4 = False;re5 = False;out = []
@@ -39,7 +38,8 @@ class nel:
       intersect = st1.intersection(st2)
       uniont = st1.union(st2)
       rpt = len(intersect) / len(uniont)
-      rpst = rpt * 100
+      self.rpst = rpt * 100
+      
       try:
         if rpt >= self.random.randint(sts-10,sts):inpu.append(self.inpulx)
       except:pass
@@ -226,12 +226,17 @@ class nel:
     inpu = inpu.split(str(split));inpu.append(logx)
     return le3
     
-  def maj(self):
+  def maj(self,inp):
     while True:
-      s=(self.gram(self.nerves_in(input("Input -> "),False," ")))
-      try:s = ' '.join(s);print("Output ->",s)
+      s=(self.gram(self.nerves_in(inp,False," ")))
+      try:s = ' '.join(s);return(s)
       except:pass
-    
-nuls = nel()
-if __name__ == '__main__':
-  nuls.maj()
+
+import random
+def digN(logd):
+  nuls = nel();nuls2 = nel();rls=[]
+  while True:
+    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True,"",45,50,False,False,False,False,True,False);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);print(me)
+    if me >= random.randint(70,100):nuls.maj("_")
+    if logd == True:print(nuls2.inpul)
+digN(True)
