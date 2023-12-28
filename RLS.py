@@ -28,7 +28,7 @@ class nel:
           words.append(item)
       return words
     except: return words
-  def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll,clea):
+  def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll,clea,rv):
     def run(inpu,log):
       trm = False;re = False;re2 = False;re3 = False;re4 = False;re5 = False;out = []
       numr = 0
@@ -180,7 +180,10 @@ class nel:
                         out.append(self.inpul[nl + xn])
               except:pass
             #IQ 9000000000000
-            if self.random.randint(0,90)==0:out = list(set([''.join(item) for item in out]))
+            if self.random.randint(0,rv)==0:out = list(set([''.join(item) for item in out]))
+            try:
+              if self.random.randint(0,rv*3)==0:self.inpul = list(set([''.join(item) for item in self.inpul]))
+            except:pass
           numr += 1
       try:
         if log == True:print(self.inpul);print(rps),print(self.inpux);print(rpt)
@@ -198,8 +201,8 @@ class nel:
       return outref
     return run(inpu,log)
   def nerves_in(self,inpu,log,split):
-    stglo = self.nerve_in(inpu,log,split,45,60,True,True,True,True,True,True if self.random.randint(0,90)==0 else False)
-    stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True,False)
+    stglo = self.nerve_in(inpu,log,split,45,60,True,True,True,True,True,True if self.random.randint(0,90)==0 else False,20)
+    stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True,False,90)
     comb = []
     if self.random.randint(0,5) == 5:
       for item in stglo:
@@ -236,7 +239,7 @@ import random
 def digN(logd):
   nuls = nel();nuls2 = nel();rls=[]
   while True:
-    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True,"",45,50,False,False,False,False,True,True);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul)
+    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True,"",45,50,False,False,False,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul)
     if me >= random.randint(40,100):nuls.maj("_")
     if logd == True:print(nuls2.inpul)
 digN(True)
