@@ -202,16 +202,7 @@ class nel:
     return run(inpu,log)
   def nerves_in(self,inpu,log,split):
     stglo = self.nerve_in(inpu,log,split,45,60,True,True,True,True,True,True if self.random.randint(0,90)==0 else False,20)
-    stb = self.nerve_in(inpu,log,split,45,50,True,True,False,False,True,False,90)
-    comb = []
-    if self.random.randint(0,5) == 5:
-      for item in stglo:
-        nt = self.random.randint(0,100)
-        if nt <= 60:
-          if item in stb:
-              comb.append(item)
-        else:pass
-    else:comb.append(stglo)
+    comb = stglo
     flat = []
     for item in comb:
       if isinstance(item, list):flat.extend(item)
