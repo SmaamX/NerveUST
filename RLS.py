@@ -236,7 +236,7 @@ import random
 def digN(logd):
   nuls = nel();nuls2 = nel();rls=[]
   while True:
-    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True,"",45,50,False,False,False,False,True,False);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul)
-    if me >= random.randint(70,100):nuls.maj("_")
+    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True,"",45,50,False,False,False,False,True,True);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul)
+    if me >= random.randint(40,100):nuls.maj("_")
     if logd == True:print(nuls2.inpul)
 digN(True)
