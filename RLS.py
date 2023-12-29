@@ -202,7 +202,7 @@ import random
 def digN(logd):
   nuls = nel();nuls2 = nel();rls=[];rr=0;rs=1
   while True:
-    inps = input("Input -> ");s=nuls.maj(inps);print("Output ->",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True," ",45,50,False,False,True,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);nuls2.inpul.append(me)
+    inps = input("\u001b[44mInput ->\u001b[0m"+" ");s=nuls.maj(inps);print("\u001b[42mOutput ->\u001b[0m",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True," ",45,50,False,False,True,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);nuls2.inpul.append(me)
     if rr == 1 and rs == 1:nuls2.inpux[-2]=0.0;nuls2.inpul[-2]=0.0;rr=0;rs=0
     if inps == "_":nuls2.inpux.append(me);rr=1
     if me >= random.randint(40,100):nuls.maj("_");rr=1;p=nuls2.nerve_in("",True,"",45,50,False,False,True,False,True,True,50);nuls2.inpux.append(me)
