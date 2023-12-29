@@ -63,36 +63,6 @@ class nel:
           if re == False:inpu.remove('_');re=True
       except:pass
       try:
-        if inpu[0] == 'pron_':
-          self.pronouns.append(self.inpulx)
-          flat = []
-          for item in self.pronouns:
-            if isinstance(item, list):flat.extend(item)
-            else:flat.append(item)
-          self.pronouns = flat
-          if re == False:inpu.remove('pron_');re2=True
-      except:pass
-      try:
-        if inpu[0] == 'verb_':
-          self.verbs.append(self.inpulx)
-          flat = []
-          for item in self.verbs:
-            if isinstance(item, list):flat.extend(item)
-            else:flat.append(item)
-          self.verbs = flat
-          if re == False:inpu.remove('verb_');re3=True
-      except:pass
-      try:
-        if inpu[0] == 'arti_':
-          self.articles.append(self.inpulx)
-          flat = []
-          for item in self.articles:
-            if isinstance(item, list):flat.extend(item)
-            else:flat.append(item)
-          self.articles = flat
-          if re == False:inpu.remove('arti_');re4=True
-      except:pass
-      try:
         if inpu[0] == 'outme_':
           if re == False:inpu.remove('outme_')
           print(self.inpul)
