@@ -1,33 +1,33 @@
 
 class nel:
   import random
-  inpul = ["0"];inpux = [];inpulx = [];logx = [];pronouns = ['i', 'you', 'he', 'she', 'it', 'we', 'they', 'myself', 'yourself', 'herself', 'himself', 'itself', 'oneself', 'ourselves', 'yourselves', 'themselves', 'each other', 'one another', 'whoever', 'whomever', 'whatsoever', 'whosoever', 'whichever', 'whichever way'];verbs = ['is', 'was', 'run', 'eat', 'think', 'feel', 'become', 'begin', 'bring', 'build', 'buy', 'call', 'carry', 'catch', 'choose', 'come', 'cost', 'cut', 'dance', 'deal', 'depend', 'deserve', 'destroy', 'die', 'dig', 'do', 'draw', 'dream', 'drink', 'drive', 'eat', 'end', 'enter', 'escape', 'expect', 'explain', 'fall', 'feed', 'feel', 'fight', 'find', 'finish', 'fit', 'fly', 'follow', 'forget', 'forgive', 'freeze', 'get', 'give', 'go', 'grow', 'hang', 'have', 'hear', 'help', 'hide', 'hit', 'hold', 'hope', 'hurt', 'include', 'injure', 'intend', 'introduce', 'invite', 'join', 'jump', 'keep', 'kill', 'kiss', 'know', 'laugh', 'learn', 'leave', 'lend', 'lie', 'lift', 'light', 'like', 'listen', 'live', 'lose', 'love', 'make', 'mean', 'meet', 'melt', 'mind', 'miss', 'move', 'murder', 'need', 'offer', 'open', 'operate', 'order', 'organize', 'own', 'pack', 'paint', 'park', 'pay', 'peel', 'pick', 'place', 'plan', 'play', 'please', 'point', 'poison', 'polish', 'possess', 'pour', 'pray', 'prepare', 'press', 'pretend', 'print', 'produce', 'promise', 'protect', 'pull', 'push', 'put', 'question', 'race', 'rain', 'raise', 'reach', 'read', 'realize', 'receive', 'recognize', 'recommend', 'record', 'refuse', 'regret', 'relate', 'relax', 'release', 'rely', 'remain', 'remember', 'remove', 'rent', 'repair', 'repeat', 'replace', 'report', 'represent', 'rescue', 'rest', 'return', 'reveal', 'ride', 'ring', 'rise', 'rob', 'roll', 'run', 'rush', 'sail', 'say', 'scare', 'scratch', 'scream', 'screw', 'scrub', 'search', 'see', 'sell', 'send', 'separate', 'serve', 'set', 'settle', 'sew', 'shake', 'shave', 'shine', 'shoot', 'shop', 'show', 'shrink', 'shut', 'sing', 'sink', 'sit', 'ski', 'sleep', 'slide', 'slip', 'smell', 'smile', 'smoke', 'sneeze', 'soak', 'solve', 'sort', 'sound', 'speak', 'speed', 'spend', 'spill', 'spin', 'spit', 'split', 'spoil', 'spread', 'spring', 'sprinkle', 'squeeze', 'stab', 'stand', 'start', 'stay', 'steal', 'stick', 'stir', 'stop', 'store', 'stretch', 'strike', 'study', 'stuff', 'stumble', 'succeed', 'suck', 'suffer', 'suggest', 'suit', 'supply', 'support', 'surprise', 'swallow', 'sweep', 'swim', 'swing', 'talk', 'taste', 'teach', 'tear', 'tell', 'test', 'thank', 'think', 'throw', 'tie', 'tighten', 'tip', 'touch', 'trade', 'train', 'translate', 'travel', 'treat', 'tremble', 'try', 'turn', 'type', 'understand', 'undress', 'unfold', 'unlock', 'unpack', 'upset', 'use', 'vacuum', 'value', 'visit', 'vote', 'wait', 'wake', 'walk', 'wander', 'want', 'warm', 'wash', 'waste', 'watch', 'water', 'wear', 'weave', 'weep', 'weigh', 'welcome', 'wet', 'wheel', 'whisper', 'whistle', 'win', 'wind', 'wipe', 'wish'];articles = ['the', 'a', 'an'];com = ['clear'];rpst=None
+  inpul = ["0"];inpux = [];inpulx = [];logx = [];com = ['clear'];rpst=None
   def inpuld(x):
     back = self.inpul 
     self.inpul = x
     return back
   r = True
 
-  def gram(self,words):
+  def gram(self,text):
     try:
-      pos_t = {
-        "NN": lambda w: w.lower()[-3:] == "ist",
-        "VB": lambda w: w.lower() in self.verbs,  
-        "JJ": lambda w: w.lower()[-4:] == "iest"
-      }
-      self.adjectives = [w for w in words if pos_t["JJ"](w)]
-      self.nouns = [w for w in words if pos_t["NN"](w)]
-      words = sorted(words, key=lambda w: (0,1) if pos_t["JJ"](w) else (1,0)) 
-      words = sorted(words, key=lambda w: (0,2) if pos_t["NN"](w) else (2,0))
-      words = sorted(words, key=lambda w: (0,3) if w.lower() in self.verbs else (3,0))
-      words = sorted(words, key=lambda w: (self.pronouns.index(w.lower()), w) if w.lower() in self.pronouns else (4, w))
-      words = sorted(words, key=lambda w: (self.articles.index(w.lower()), w) if w.lower() in self.articles else (5, w))
-      for item in words:
-        if item.endswith('?') or item.endswith('!'):
-          words.remove(item)
-          words.append(item)
+      from nltk import word_tokenize, pos_tag
+      text = " ".join(text)
+      tagged = pos_tag(word_tokenize(text))
+      nouns = [word for word, pos in tagged if pos == 'NN'] 
+      verbs = [word for word, pos in tagged if pos == 'VB']
+      words = sorted(word_tokenize(text),
+      key=lambda word: (0,1) if word in nouns else (1,0))
       return words
-    except: return words
+    except:
+      sy=input("F Error try for install nltk , punkt , averaged_perceptron_tagger ? (y/n) ->")
+      if "y" in sy:
+        import os
+        os.system("python -m pip install nltk")
+        try:import nltk
+        except:os.system("py -m pip install nltk")
+        try:nltk.download('punkt');nltk.download('averaged_perceptron_tagger');print("[OK]");return []
+        except:print("[FL]");return []
+      else:return []
   def nerve_in(self,inpu,log,split,sts,sts2,res,res2,lear,logxb,tll,clea,rv):
     def run(inpu,log):
       trm = False;re = False;re2 = False;re3 = False;re4 = False;re5 = False;out = []
