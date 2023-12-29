@@ -180,7 +180,9 @@ class nel:
                         out.append(self.inpul[nl + xn])
               except:pass
             #IQ 9000000000000
-            if self.random.randint(0,rv)==0:out = list(set([''.join(item) for item in out]))
+            try:
+              if self.random.randint(0,rv)==0:out = list(set([''.join(item) for item in out]))
+            except:pass
             try:
               if self.random.randint(0,rv*3)==0:self.inpul = list(set([''.join(item) for item in self.inpul]))
             except:pass
