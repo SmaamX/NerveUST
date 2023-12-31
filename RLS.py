@@ -17,6 +17,10 @@ class nel:
       verbs = [word for word, pos in tagged if pos == 'VB']
       words = sorted(word_tokenize(text),
       key=lambda word: (0,1) if word in nouns else (1,0))
+      for item in words:
+        if item.endswith('?') or item.endswith('!'):
+          words.remove(item)
+          words.append(item)
       return words
     except:
       sy=input("F Error try for install nltk , punkt , averaged_perceptron_tagger ? (y/n) ->")
