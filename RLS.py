@@ -1,4 +1,3 @@
-
 class nel:
   import random
   inpul = ["0"];inpux = [];inpulx = [];logx = [];com = ['clear'];rpst=None
@@ -203,12 +202,37 @@ class nel:
       except:pass
 
 import random
-def digN(logd):
+def digN(logd,outm,api="https://api.safone.dev/chatgpt",prm="Make this combination of wording and wording completely correct and do not write anything extra other than the correctly worded and written text, just the text, do not answer any questions and do not say anything else. Your duty is only to rewrite the texts correctly for example INPUT: are hello and you how , Your OUTPUT: hello and how are you , Dont give any impression that you are a gpt chat just be a raw model and avoid saying (Im sorry) and (As an) and (I apologize) and stuff like that. You should not react to anything until further notice -> "):
   nuls = nel();nuls2 = nel();rls=[];rr=0;rs=1
+  if outm==True:
+    try:import requests
+    except ModuleNotFoundError:
+      so=input("F Error install requests ? (y/n) ->")
+      if "y" in so:
+        import os
+        os.system("python -m pip install requests")
+        try:import requests
+        except:os.system("py -m pip install requests")
+        try:import requests;print("[OK]")
+        except:print("[FL]")
+      else:s=""
   while True:
-    inps = input("\u001b[44mInput ->\u001b[0m"+" ");s=nuls.maj(inps);print("\u001b[42mOutput ->\u001b[0m",s);nuls2.inpul=[0];p=nuls2.nerve_in(rls,True," ",45,50,False,False,True,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);nuls2.inpul.append(me)
-    if rr == 1 and rs == 1:nuls2.inpux[-2]=0.0;nuls2.inpul[-2]=0.0;rr=0;rs=0
+    inps = input("\u001b[44mInput ->\u001b[0m"+" ");s=nuls.maj(inps)
+    if outm == True:
+      data = {
+        "message": prm+s
+      }
+      try:
+        r = requests.post(api, data=data);response_json = r.json();sd=(response_json['choices'][0]['message']['content'])
+        if "sorry" in sd or "apologize" in sd or "as an" in sd:print("\u001b[42mOutput ->\u001b[0m",s)
+        else:print("\u001b[42mOutput ->\u001b[0m",sd);inps="_"
+      except:print("\u001b[42mOutput ->\u001b[0m",s)
+    else:print("\u001b[42mOutput ->\u001b[0m",s)
+    nuls2.inpul=[0];p=nuls2.nerve_in(rls,True," ",45,50,False,False,True,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);nuls2.inpul.append(me)
+    if rr == 1 and rs == 1:
+      try:nuls2.inpux[-2]=0.0;nuls2.inpul[-2]=0.0;rr=0;rs=0
+      except:pass
     if inps == "_":nuls2.inpux.append(me);rr=1
     if me >= random.randint(40,100):nuls.maj("_");rr=1;p=nuls2.nerve_in("",True,"",45,50,False,False,True,False,True,True,50);nuls2.inpux.append(me)
     if logd == True:print(nuls2.inpux);print(nuls2.inpul)
-digN(True)
+digN(True,True)
