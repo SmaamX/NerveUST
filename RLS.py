@@ -216,17 +216,19 @@ def digN(logd,outm,api="https://api.safone.dev/chatgpt",prm="Make this combinati
         try:import requests;print("[OK]")
         except:print("[FL]")
       else:s=""
+  def daup(prm,api):
+    data = {
+        "message": prm+"("+s+")"
+      }
+    try:r = requests.post(api, data=data);response_json = r.json();return (response_json['choices'][0]['message']['content'])
+    except:return ""
   while True:
     inps = input("\u001b[44mInput ->\u001b[0m"+" ");s=nuls.maj(inps)
     if outm == True:
-      data = {
-        "message": prm+"("+s+")"
-      }
-      try:
-        r = requests.post(api, data=data);response_json = r.json();sd=(response_json['choices'][0]['message']['content'])
-        if "sorry" in sd or "apologize" in sd or "as an" in sd:print("\u001b[42mOutput ->\u001b[0m",s)
-        else:print("\u001b[42mOutput ->\u001b[0m",sd);inps="_"
-      except:print("\u001b[42mOutput ->\u001b[0m",s)
+      sd=daup(prm,api)
+      if sd == "":print("\u001b[42mOutput ->\u001b[0m",s)
+      if "sorry" in sd or "apologize" in sd or "as an" in sd:print("\u001b[42mOutput ->\u001b[0m",s)
+      else:print("\u001b[42mOutput ->\u001b[0m",sd)
     else:print("\u001b[42mOutput ->\u001b[0m",s)
     nuls2.inpul=[0];p=nuls2.nerve_in(rls,True," ",45,50,False,False,True,False,True,True,50);rls.append(float((nuls2.rpst+nuls.rpst)/2));nuls2.inpul.extend(rls);me=sum(nuls2.inpul)/len(nuls2.inpul);nuls2.inpul.append(me)
     if rr == 1 and rs == 1:
