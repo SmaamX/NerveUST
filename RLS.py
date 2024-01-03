@@ -202,7 +202,7 @@ class nel:
       except:pass
 
 import random
-def digN(logd,outm,api="https://api.safone.dev/chatgpt",prm="Make this combination of wording and wording completely correct and do not write anything extra other than the correctly worded and written text, just the text, do not answer any questions and do not say anything else. Your duty is only to rewrite the texts correctly for example INPUT: are hello and you how , Your OUTPUT: hello and how are you , Dont give any impression that you are a gpt chat just be a raw model and avoid saying (Im sorry) and (As an) and (I apologize) and stuff like that. You should not react to anything until further notice ->"):
+def digN(logd,outm,api="https://api.safone.dev/chatgpt",prm="Just make wording completely correct and do not write anything extra other than the correctly worded and written text, just the text, do not answer any questions and do not say anything else. Your duty is only to rewrite the texts correctly for example INPUT: are hello and you how , Your OUTPUT: hello and how are you , Dont give any impression that you are a gpt chat just be a raw model and avoid saying (Im sorry) and (As an) and (I apologize) and stuff like that. You should not react to anything until further notice ->"):
   nuls = nel();nuls2 = nel();rls=[];rr=0;rs=1
   if outm==True:
     try:import requests
